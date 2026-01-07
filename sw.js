@@ -3,7 +3,7 @@
  * Enables offline functionality and PWA installation
  */
 
-const CACHE_NAME = 'pf-admin-v2';
+const CACHE_NAME = 'pf-admin-v3';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',

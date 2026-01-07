@@ -1,13 +1,14 @@
 {
-  "name": "PromptForge License Generator",
+  "name": "PF License Admin",
   "short_name": "PF Admin",
   "description": "Admin tool for generating PromptForge license keys",
-  "start_url": "./index.html",
+  "start_url": "./index.html?app=admin",
   "scope": "./",
   "display": "standalone",
   "background_color": "#1e1e2e",
   "theme_color": "#1e1e2e",
   "orientation": "portrait",
+  "id": "/promptforge-admin/",
   "icons": [
     {
       "src": "icons/icon.svg",
@@ -28,9 +29,7 @@
     }
   ],
   "categories": [
-    "utilities",
-    "productivity"
+    "utilities"
   ],
-  "lang": "en",
-  "id": "promptforge-admin"
+  "lang": "en"
 }
