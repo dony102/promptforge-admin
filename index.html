@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1e1e2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PF Admin">
+    <title>PromptForge License Generator</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Password Lock Screen -->
+    <div id="lockScreen" class="lock-screen">
+        <div class="lock-container">
+            <div class="lock-icon">🔐</div>
+            <h1 class="lock-title">PromptForge Admin</h1>
+            <p class="lock-subtitle">Enter password to continue</p>
+            <div class="password-field">
+                <input type="password" id="passwordInput" class="password-input" placeholder="••••••" maxlength="6"
+                    inputmode="numeric" pattern="[0-9]*">
+                <button id="btnShowPassword" class="btn-show-password" type="button">👁️</button>
+            </div>
+            <button id="btnUnlock" class="btn-unlock">🔓 Unlock</button>
+            <div id="lockError" class="lock-error"></div>
+        </div>
+    </div>
+
+    <!-- Main App (hidden until authenticated) -->
+    <div id="mainApp" class="main-app" style="display:none">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="app-title">⚡ PromptForge</h1>
+            <p class="app-subtitle">License Key Generator</p>
+            <button id="btnLogout" class="btn-logout" title="Lock App">🔒</button>
+        </header>
+
+        <!-- Generator Section -->
+        <main class="main-content">
+            <section class="card generator-card">
+                <h2 class="card-title">🔑 Generate License Key</h2>
+
+                <div class="form-group">
+                    <label for="machineIdInput">Machine ID</label>
+                    <div class="input-row">
+                        <input type="text" id="machineIdInput" class="form-input"
+                            placeholder="Paste Machine ID here...">
+                        <button id="btnPasteMachineId" class="btn-icon" title="Paste">📋</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerName">Customer Name (Optional)</label>
+                    <input type="text" id="customerName" class="form-input" placeholder="e.g., John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="expiryDays">License Duration</label>
+                    <select id="expiryDays" class="form-select">
+                        <option value="30">30 Days</option>
+                        <option value="90">90 Days</option>
+                        <option value="180">180 Days</option>
+                        <option value="365" selected>1 Year</option>
+                        <option value="0">Lifetime</option>
+                    </select>
+                </div>
+
+                <button id="btnGenerate" class="btn-generate">✨ Generate License Key</button>
+            </section>
+
+            <!-- Output Section -->
+            <section id="outputSection" class="card output-card" style="display:none">
+                <h2 class="card-title">📄 Generated License</h2>
+
+                <div class="license-display">
+                    <label>License Key:</label>
+                    <div class="license-key-box">
+                        <code id="generatedKey">PF-XXXX-XXXX-XXXX-XXXX-XXXX</code>
+                        <button id="btnCopyKey" class="btn-copy">📋 Copy</button>
+                    </div>
+                </div>
+
+                <div class="license-info">
+                    <div class="info-row">
+                        <span class="info-label">Machine ID:</span>
+                        <span id="infoMachineId" class="info-value">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Customer:</span>
+                        <span id="infoCustomer" class="info-value">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Created:</span>
+                        <span id="infoCreated" class="info-value">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Expires:</span>
+                        <span id="infoExpires" class="info-value">-</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="btnShareWhatsApp" class="btn-share whatsapp">📱 WhatsApp</button>
+                    <button id="btnShareTelegram" class="btn-share telegram">✈️ Telegram</button>
+                    <button id="btnCopyAll" class="btn-share copy-all">📋 Copy All</button>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section class="card history-card">
+                <div class="history-header">
+                    <h2 class="card-title">📜 History</h2>
+                    <button id="btnClearHistory" class="btn-clear-history">🗑️</button>
+                </div>
+                <div id="historyList" class="history-list">
+                    <p class="empty-history">No licenses generated yet</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>© 2026 Muhammad Anggi - PromptForge Admin</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
